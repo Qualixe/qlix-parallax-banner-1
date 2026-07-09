@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Premium Parallax Banner-1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    :root {
+      /* font-family */
+      --font-primary: Inter, sans-serif;
+
+      --qlix-parallax-banner-section-h: 100dvh;
+      --qlix-parallax-banner-section-mh: 700px;
+
+      --qlix-parallax-banner-section-before-bg: radial-gradient(circle at 20% 20%, rgba(0, 212, 255, .18), transparent 35%),
+        radial-gradient(circle at 80% 70%, rgba(124, 58, 237, .24), transparent 40%);
+
+      --qlix-parallax-banner-bg: linear-gradient(rgba(8, 10, 25, .45), rgba(8, 10, 25, .75));
+
+      --qlix-parallax-banner-content-mw: 850px;
+      --qlix-parallax-banner-content-p: 30px;
+
+      --qlix-parallax-banner-badge-p: 8px 16px;
+      --qlix-parallax-banner-badge-bg: rgba(255, 255, 255, .08);
+      --qlix-parallax-banner-badge-fs: .85rem;
+      --qlix-parallax-banner-badge-ls: .12em;
+      --qlix-parallax-banner-badge-mb: 24px;
+      --qlix-parallax-banner-badge-color: #ffffff;
+      --qlix-parallax-banner-badge-fw: 400;
+
+      --qlix-parallax-banner-title-fs: clamp(3rem, 7vw, 5.8rem);
+      --qlix-parallax-banner-title-lh: 1;
+      --qlix-parallax-banner-title-fw: 800;
+      --qlix-parallax-banner-title-mb: 20px;
+      --qlix-parallax-banner-title-bg: linear-gradient(90deg, #fff, #9ce8ff, #d7b8ff);
+
+      --qlix-parallax-banner-text-fs: 1.15rem;
+      --qlix-parallax-banner-text-fw: 400;
+      --qlix-parallax-banner-text-lh: 1.8;
+      --qlix-parallax-banner-text-color: #d8deef;
+      --qlix-parallax-banner-text-mb: 36px;
+
+      --qlix-parallax-banner-btn-p: 16px 34px;
+      --qlix-parallax-banner-btn-fs: 16px;
+      --qlix-parallax-banner-btn-fw: 700;
+
+      --qlix-parallax-banner-btn-primary-bg: linear-gradient(135deg, #00d4ff, #7c3aed);
+      --qlix-parallax-banner-btn-primary-color: #ffffff;
+      --qlix-parallax-banner-btn-primary-shadow: 0 20px 40px rgba(96, 92, 255, .35);
+
+      --qlix-parallax-banner-btn-secondary-bg: rgba(255, 255, 255, .08);
+      --qlix-parallax-banner-btn-secondary-color: #ffffff;
+
+      --qlix-parallax-banner-scroll-color: #ffffff;
+      --qlix-parallax-banner-scroll-fs: 16px;
+      --qlix-parallax-banner-scroll-fw: 400;
+      --qlix-parallax-banner-scroll-ls: .15em;
+
+
+
+
+
+    }
+
+    .qlix-parallax-banner-section {
+      position: relative;
+      height: var(--qlix-parallax-banner-section-h);
+      min-height: var(--qlix-parallax-banner-section-mh);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qlix-parallax-banner-bg {
+      position: absolute;
+      inset: -10% 0;
+      height: 120%;
+      background: var(--qlix-parallax-banner-bg), url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center;
+      transform: translate3d(0, 0, 0) scale(1.08);
+      will-change: transform;
+      z-index: 0;
+    }
+
+    .qlix-parallax-banner-section:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: var(--qlix-parallax-banner-section-before-bg);
+      pointer-events: none;
+    }
+
+    .qlix-parallax-banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--qlix-parallax-banner-content-mw);
+      padding: var(--qlix-parallax-banner-content-p);
+      text-align: center;
+    }
+
+    .qlix-parallax-banner-badge {
+      display: inline-block;
+      padding: var(--qlix-parallax-banner-badge-p);
+      border: 1px solid rgba(255, 255, 255, .25);
+      backdrop-filter: blur(14px);
+      background: var(--qlix-parallax-banner-badge-bg);
+      border-radius: 999px;
+      font-size: var(--qlix-parallax-banner-badge-fs);
+      letter-spacing: var(--qlix-parallax-banner-badge-ls);
+      text-transform: uppercase;
+      margin-bottom: var(--qlix-parallax-banner-badge-mb);
+      font-weight: var(--qlix-parallax-banner-badge-fw);
+      color: var(--qlix-parallax-banner-badge-color);
+      font-family: var(--font-primary);
+    }
+
+    .qlix-parallax-banner-title {
+      font-size: var(--qlix-parallax-banner-title-fs);
+      line-height: var(--qlix-parallax-banner-title-lh);
+      font-weight: var(--qlix-parallax-banner-title-fw);
+      margin-bottom: var(--qlix-parallax-banner-title-mb);
+      background: var(--qlix-parallax-banner-title-bg);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: var(--font-primary);
+    }
+
+    .qlix-parallax-banner-text {
+      font-size: var(--qlix-parallax-banner-text-fs);
+      line-height: var(--qlix-parallax-banner-text-lh);
+      color: var(--qlix-parallax-banner-text-color);
+      margin-bottom: var(--qlix-parallax-banner-text-mb);
+      font-family: var(--font-primary);
+    }
+
+    .qlix-parallax-banner-btns {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap
+    }
+
+    .qlix-parallax-banner-btn {
+      padding: var(--qlix-parallax-banner-btn-p);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: var(--qlix-parallax-banner-btn-fs);
+      font-weight: var(--qlix-parallax-banner-btn-fw);
+      transition: .3s;
+      text-transform: capitalize;
+      font-family: var(--font-primary);
+    }
+
+    .qlix-parallax-banner-btn-primary {
+      background: var(--qlix-parallax-banner-btn-primary-bg);
+      color: var(--qlix-parallax-banner-btn-primary-color);
+      box-shadow: var(--qlix-parallax-banner-btn-primary-shadow);
+    }
+
+    .qlix-parallax-banner-btn-secondary {
+      background: var(--qlix-parallax-banner-btn-secondary-bg);
+      color: var(--qlix-parallax-banner-btn-secondary-color);
+      border: 1px solid rgba(255, 255, 255, .25);
+    }
+
+    .qlix-parallax-banner-btn:hover {
+      transform: translateY(-4px)
+    }
+
+    .qlix-parallax-banner-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      letter-spacing: var(--qlix-parallax-banner-scroll-ls);
+      color: var(--qlix-parallax-banner-scroll-color);
+      font-size: var(--qlix-parallax-banner-scroll-fs);
+      font-weight: var(--qlix-parallax-banner-scroll-fw);
+      font-family: var(--font-primary);
+    }
+
+    .section {
+      padding: 120px 10%;
+      background: #fff;
+      color: #111;
+      font-family: Inter, sans-serif;
+      ;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="qlix-parallax-banner-section">
+    <div class="qlix-parallax-banner-bg"></div>
+    <div class="qlix-parallax-banner-content">
+      <span class="qlix-parallax-banner-badge">Premium Experience</span>
+      <h1 class="qlix-parallax-banner-title">Build Luxury Shopping Experiences</h1>
+      <p class="qlix-parallax-banner-text">Create stunning Shopify storefronts with immersive parallax effects, premium
+        typography, glassmorphism, and
+        modern gradients.</p>
+      <div class="qlix-parallax-banner-btns">
+        <a href="#" class="qlix-parallax-banner-btn qlix-parallax-banner-btn-primary">Explore Collection</a>
+        <a href="#" class="qlix-parallax-banner-btn qlix-parallax-banner-btn-secondary">Watch Demo</a>
+      </div>
+    </div>
+    <div class="qlix-parallax-banner-scroll">Scroll ↓</div>
+  </section>
+
+  <section class="section">
+    <h2>Scroll Down</h2>
+    <p>The background image moves at a slower speed than the page, creating a smooth premium parallax effect.</p>
+    <div style="height:1200px"></div>
+  </section>
+
+  <script>
+    const bg = document.querySelector('.qlix-parallax-banner-bg');
+    let current = 0, target = 0;
+
+    window.addEventListener('scroll', () => {
+      target = window.scrollY * 0.35;
+    });
+
+    function animate() {
+      current += (target - current) * 0.08;
+      bg.style.transform = `translate3d(0,${current}px,0) scale(1.08)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+
+</html>
